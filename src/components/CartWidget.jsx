@@ -1,7 +1,27 @@
+import { useContext } from "react"
+
+import { CartContext } from "../context/CartContext"
+
+
 const CartWidget = () => {
+
+    const { cart } = useContext(CartContext)
+
+    const cantidadTotal = cart.reduce(
+        (acumulador, producto) => acumulador + producto.cantidad, 0
+    )
+
+
     return (
-        <span>ICONO CARRITO 0</span>
+
+        <div>
+
+            ICONO CARRITO {cantidadTotal}
+
+        </div>
+
     )
 }
+
 
 export default CartWidget

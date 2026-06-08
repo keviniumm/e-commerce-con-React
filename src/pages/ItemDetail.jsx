@@ -1,12 +1,18 @@
+import { useContext } from "react"
 import { useParams } from "react-router-dom"
 
 import products from '../data/products'
 
 import ItemCount from '../components/ItemCount'
 
+import { CartContext } from "../context/CartContext"
+
+
 const ItemDetail = () => {
 
     const { id } = useParams()
+
+    const { cart, setCart } = useContext(CartContext)
 
 
     const productosEcontrados = products.find(producto => producto.id == id)
@@ -17,7 +23,16 @@ const ItemDetail = () => {
     }
 
     const onAdd = (cantidad) => {
-        console.log('Cantidad agregada:', cantidad)
+        
+        const productoAgregado = {
+            ...productosEcontrados,
+            cantidad
+        }
+
+        setCart([...cart, productoAgregado])
+
+        console.log([...cart, productoAgregado])
+
     }
 
 
