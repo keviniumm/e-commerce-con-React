@@ -23,15 +23,46 @@ const ItemDetail = () => {
     }
 
     const onAdd = (cantidad) => {
-        
-        const productoAgregado = {
-            ...productosEcontrados,
-            cantidad
+
+        const productoExistente = cart.find(
+            producto => producto.id === productosEcontrados.id
+        )
+
+        if (productoExistente) {
+
+            const carritoActualizado = cart.map(producto => {
+
+                if (producto.id === productosEcontrados.id) {
+
+                    return {
+
+                        ...producto,
+
+                        cantidad: producto.cantidad + cantidad
+
+                    }
+                }
+
+                return producto
+
+            })
+
+            setCart(carritoActualizado)
+
         }
 
-        setCart([...cart, productoAgregado])
 
-        console.log([...cart, productoAgregado])
+        else {
+
+            const productoAgregado = {
+                ...productosEcontrados,
+                cantidad
+            }
+
+            setCart([...cart, productoAgregado])
+
+        }
+
 
     }
 

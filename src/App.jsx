@@ -22,7 +22,7 @@ function App() {
 
         <Route
           path='/'
-          element={<ItemListContainer greeting="Bienvenidos a mi tienda" />  
+          element={<ItemListContainer greeting="Bienvenidos a mi tienda" />
           }
         />
 
@@ -41,7 +41,7 @@ function App() {
 
 
       </Routes>
-      
+
     </>
   )
 }
