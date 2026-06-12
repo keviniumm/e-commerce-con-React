@@ -1,7 +1,14 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
-import products from "../data/products"
+import {
+    collection,
+    getDocs,
+    query,
+    where
+} from "firebase/firestore"
+import { db } from "../firebase/firebaseConfig"
+
 import ItemList from "./ItemList"
 
 
@@ -13,11 +20,32 @@ const ItemLIstContainer = ({ greeting }) => {
 
     useEffect(() => {
 
-        const productosFiltrados = categoryId
-            ? products.filter(producto => producto.categoria === categoryId)
-            : products
+        const obtenerProductos = async () => {
 
-        setItems(productosFiltrados)
+            const productsRef = categoryId
+                ? query(
+                    collection(db, "products"),
+                    where("categoria", "==", categoryId)
+                )
+                : collection(db, "products")
+
+            const snapshot = await getDocs(productsRef)
+
+
+
+
+            const productos = snapshot.docs.map(doc => ({
+
+                id: doc.id,
+                ...doc.data()
+
+            }))
+
+            setItems(productos)
+
+        }
+
+        obtenerProductos()
 
     }, [categoryId])
 

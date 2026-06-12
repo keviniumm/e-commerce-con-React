@@ -1,7 +1,10 @@
+import { useEffect, useState } from "react"
+import { doc, getDoc } from "firebase/firestore"
+import { db } from "../firebase/firebaseConfig"
+
 import { useContext } from "react"
 import { useParams } from "react-router-dom"
 
-import products from '../data/products'
 
 import ItemCount from '../components/ItemCount'
 
@@ -14,32 +17,45 @@ const ItemDetail = () => {
 
     const { cart, setCart } = useContext(CartContext)
 
+    const [productoEncontrado, setProductoEncontrado] = useState(null)
 
-    const productosEcontrados = products.find(producto => producto.id == id)
+    useEffect(() => {
+
+        const obtenerProducto = async () => {
+
+            const docRef = doc(db, "products", id)
+
+            const snapshot = await getDoc(docRef)
+
+            setProductoEncontrado({
+
+                id: snapshot.id,
+                ...snapshot.data()
+
+            })
+        }
+        obtenerProducto()
+    }, [id])
 
 
-    if (!productosEcontrados) {
-        return <h2>Producto no encontrado</h2>
+    if (!productoEncontrado) {
+        return <h2>Cargando producto...</h2>
     }
 
     const onAdd = (cantidad) => {
 
         const productoExistente = cart.find(
-            producto => producto.id === productosEcontrados.id
+            producto => producto.id === productoEncontrado.id
         )
 
         if (productoExistente) {
 
             const carritoActualizado = cart.map(producto => {
-
-                if (producto.id === productosEcontrados.id) {
+                if (producto.id === productoEncontrado.id) {
 
                     return {
-
                         ...producto,
-
                         cantidad: producto.cantidad + cantidad
-
                     }
                 }
 
@@ -55,7 +71,7 @@ const ItemDetail = () => {
         else {
 
             const productoAgregado = {
-                ...productosEcontrados,
+                ...productoEncontrado,
                 cantidad
             }
 
@@ -72,17 +88,17 @@ const ItemDetail = () => {
         <section>
 
             <img
-                src={productosEcontrados.imagen}
-                alt={productosEcontrados.nombre}
+                src={productoEncontrado.imagen}
+                alt={productoEncontrado.nombre}
             />
 
-            <h2>{productosEcontrados.nombre}</h2>
+            <h2>{productoEncontrado.nombre}</h2>
 
-            <p>{productosEcontrados.descripcion}</p>
+            <p>{productoEncontrado.descripcion}</p>
 
-            <p>Precio: ${productosEcontrados.precio}</p>
+            <p>Precio: ${productoEncontrado.precio}</p>
 
-            <p>Categoria: {productosEcontrados.categoria}</p>
+            <p>Categoria: {productoEncontrado.categoria}</p>
 
             <ItemCount onAdd={onAdd} />
 
