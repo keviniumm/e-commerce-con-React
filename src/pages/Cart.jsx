@@ -25,6 +25,10 @@ const Cart = () => {
             acumulador + (producto.precio * producto.cantidad), 0
     )
 
+    if (cart.length === 0) {
+    return <h2>El carrito está vacío</h2>
+    }
+
     return (
 
         <section>

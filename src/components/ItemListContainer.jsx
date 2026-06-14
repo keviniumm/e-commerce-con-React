@@ -18,9 +18,13 @@ const ItemLIstContainer = ({ greeting }) => {
 
     const [items, setItems] = useState([])
 
+    const [loading, setLoading] = useState(true)
+
     useEffect(() => {
 
         const obtenerProductos = async () => {
+
+            setLoading(true)
 
             const productsRef = categoryId
                 ? query(
@@ -42,13 +46,18 @@ const ItemLIstContainer = ({ greeting }) => {
             }))
 
             setItems(productos)
+            
+            setLoading(false)
 
         }
 
-        obtenerProductos()
+        obtenerProductos()    
 
     }, [categoryId])
 
+if (loading) {
+    return <h2>Cargando productos...</h2>
+}
 
     return (
         <section>

@@ -19,6 +19,8 @@ const ItemDetail = () => {
 
     const [productoEncontrado, setProductoEncontrado] = useState(null)
 
+    const [agregado, setAgregado] = useState(false)
+
     useEffect(() => {
 
         const obtenerProducto = async () => {
@@ -79,6 +81,7 @@ const ItemDetail = () => {
 
         }
 
+        setAgregado(true)
 
     }
 
@@ -100,7 +103,11 @@ const ItemDetail = () => {
 
             <p>Categoria: {productoEncontrado.categoria}</p>
 
-            <ItemCount onAdd={onAdd} />
+            {
+                agregado
+                    ? <p>Producto agregado al carrito</p>
+                    : <ItemCount onAdd={onAdd} />
+            }
 
         </section>
     )

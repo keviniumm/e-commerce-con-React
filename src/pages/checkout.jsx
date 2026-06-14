@@ -38,7 +38,8 @@ const Checkout = () => {
         const orden = {
             comprador,
             items: cart,
-            total
+            total,
+            fecha: new Date()
         }
 
         const ordersRef = collection(db, "orders")
