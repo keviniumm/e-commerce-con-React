@@ -26,51 +26,78 @@ const Cart = () => {
     )
 
     if (cart.length === 0) {
-    return <h2>El carrito está vacío</h2>
+        return <h2>El carrito está vacío</h2>
     }
 
     return (
 
-        <section>
+        <section className="container mt-5">
 
-            <h2>Carrito</h2>
+            <h2 className="mb-4">
+                🛒 Mi Carrito
+            </h2>
 
             {
                 cart.map(producto => (
 
-                    <article key={producto.id}>
+                    <div
+                        key={producto.id}
+                        className="card shadow mb-3"
+                    >
 
-                        <h3>{producto.nombre}</h3>
+                        <div className="card-body">
 
-                        <p>Cantidad: {producto.cantidad}</p>
+                            <h4>{producto.nombre}</h4>
 
-                        <p>Precio unitario: ${producto.precio}</p>
+                            <p>Cantidad: {producto.cantidad}</p>
 
-                        <p>subtotal: ${producto.precio * producto.cantidad}</p>
+                            <p>Precio unitario: ${producto.precio}</p>
 
-                        <button onClick={() => eliminarProducto(producto.id)}>
-                            Eliminar
-                        </button>
+                            <p>
+                                <strong>
+                                    Subtotal: ${producto.precio * producto.cantidad}
+                                </strong>
+                            </p>
 
-                    </article>
+                            <button
+                                className="btn btn-danger"
+                                onClick={() => eliminarProducto(producto.id)}
+                            >
+                                Eliminar
+                            </button>
+
+                        </div>
+
+                    </div>
 
                 ))
             }
 
-            <h2>Total: ${total}</h2>
+            <h3 className="mt-4">
+                Total: ${total}
+            </h3>
 
-            <button onClick={() => setCart([])}>
-                Vaciar carrito
-            </button>
-            
+            <div className="d-flex justify-content-center gap-3 mt-4">
 
-            <Link to="/checkout">
-                <button>
-                    Ir al Checkout
+                <button
+                    className="btn btn-outline-danger px-4"
+                    onClick={() => setCart([])}
+                >
+                    Vaciar carrito
                 </button>
-            </Link>
+
+                <Link to="/checkout">
+
+                    <button className="btn btn-dark px-4">
+                        Finalizar compra
+                    </button>
+
+                </Link>
+
+            </div>
 
         </section>
+
     )
 }
 

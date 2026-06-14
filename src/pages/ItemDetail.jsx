@@ -88,28 +88,51 @@ const ItemDetail = () => {
 
     return (
 
-        <section>
+        <section className="container mt-5">
 
-            <img
-                src={productoEncontrado.imagen}
-                alt={productoEncontrado.nombre}
-            />
+            <div className="row">
 
-            <h2>{productoEncontrado.nombre}</h2>
+                <div className="col-md-6 text-center">
 
-            <p>{productoEncontrado.descripcion}</p>
+                    <img
+                        src={productoEncontrado.imagen}
+                        alt={productoEncontrado.nombre}
+                        className="img-fluid rounded shadow"
+                        style={{ maxHeight: "450px" }}
+                    />
 
-            <p>Precio: ${productoEncontrado.precio}</p>
+                </div>
 
-            <p>Categoria: {productoEncontrado.categoria}</p>
+                <div className="col-md-6">
 
-            {
-                agregado
-                    ? <p>Producto agregado al carrito</p>
-                    : <ItemCount onAdd={onAdd} />
-            }
+                    <h2 className="mb-3">
+                        {productoEncontrado.nombre}
+                    </h2>
+
+                    <p className="text-muted">
+                        {productoEncontrado.descripcion}
+                    </p>
+
+                    <h3 className="my-4">
+                        ${productoEncontrado.precio}
+                    </h3>
+
+                    <p>
+                        <strong>Categoría:</strong> {productoEncontrado.categoria}
+                    </p>
+
+                    {
+                        agregado
+                            ? <p className="text-success fw-bold">Producto agregado al carrito</p>
+                            : <ItemCount onAdd={onAdd} />
+                    }
+
+                </div>
+
+            </div>
 
         </section>
+
     )
 }
 

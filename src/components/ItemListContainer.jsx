@@ -46,27 +46,45 @@ const ItemLIstContainer = ({ greeting }) => {
             }))
 
             setItems(productos)
-            
+
             setLoading(false)
 
         }
 
-        obtenerProductos()    
+        obtenerProductos()
 
     }, [categoryId])
 
-if (loading) {
-    return <h2>Cargando productos...</h2>
-}
+    if (loading) {
+        return <h2>Cargando productos...</h2>
+    }
 
     return (
-        <section>
+        <section className="container mt-4">
 
-            <h1>{greeting}</h1>
+            <div
+                className="bg-dark text-white rounded p-5 mb-5 text-center shadow"
+            >
+
+                <h1 className="display-3 fw-bold">
+                    Tech-Store
+                </h1>
+
+                <p className="lead mt-3">
+                    Los mejores productos tecnológicos al mejor precio
+                </p>
+
+                <p className="text-secondary">
+                    Celulares • Notebooks • Gaming • Accesorios
+                </p>
+
+            </div>
 
             {
                 categoryId && (
-                    <h2>Categoria: {categoryId}</h2>
+                    <h2 className="mb-4">
+                        Categoría: {categoryId}
+                    </h2>
                 )
             }
 

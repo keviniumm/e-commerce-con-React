@@ -1,45 +1,56 @@
-import CartWidget from "./CartWidget";
-import { Link } from "react-router-dom";
+import CartWidget from "./CartWidget"
+import { Link } from "react-router-dom"
 
+import Container from "react-bootstrap/Container"
+import Nav from "react-bootstrap/Nav"
+import Navbar from "react-bootstrap/Navbar"
 
 const NavBar = () => {
+
     return (
-        <nav>
 
-            <h2>Tech-Store</h2>
+        <Navbar bg="dark" data-bs-theme="dark" expand="lg">
 
+            <Container>
 
-            <ul>
+                <Navbar.Brand as={Link} to="/">
+                    Tech-Store
+                </Navbar.Brand>
 
-                <li>
-                    <Link to='/category/celulares'>
-                        Celulares
-                    </Link>
-                </li>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-                <li>
-                    <Link to='/category/notebooks'>
-                        Notebooks
-                    </Link>
-                </li>
+                <Navbar.Collapse id="basic-navbar-nav">
 
-                <li>
-                    <Link to='/category/accesorios'>
-                        Accesorios
-                    </Link>
-                </li>
+                    <Nav className="me-auto">
 
-                <li>
-                    <Link to='/category/gaming'>
-                        Gaming
-                    </Link>
-                </li>
-            </ul>
+                        <Nav.Link as={Link} to="/category/celulares">
+                            Celulares
+                        </Nav.Link>
 
-            <CartWidget />
+                        <Nav.Link as={Link} to="/category/notebooks">
+                            Notebooks
+                        </Nav.Link>
 
-        </nav>
+                        <Nav.Link as={Link} to="/category/accesorios">
+                            Accesorios
+                        </Nav.Link>
+
+                        <Nav.Link as={Link} to="/category/gaming">
+                            Gaming
+                        </Nav.Link>
+
+                    </Nav>
+
+                    <CartWidget />
+
+                </Navbar.Collapse>
+
+            </Container>
+
+        </Navbar>
+
     )
+
 }
 
 export default NavBar

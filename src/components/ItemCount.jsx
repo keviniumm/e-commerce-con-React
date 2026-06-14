@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState } from "react"
+
+import Button from "react-bootstrap/Button"
+import ButtonGroup from "react-bootstrap/ButtonGroup"
 
 const ItemCount = ({ onAdd }) => {
 
@@ -21,18 +24,47 @@ const ItemCount = ({ onAdd }) => {
     }
 
     return (
-        <div>
 
-            <button onClick={decrementar}>-</button>
+        <div className="mt-4">
 
-            <span>{count}</span>
+            <ButtonGroup className="mb-3">
 
-            <button onClick={incrementar}>+</button>
+                <Button
+                    variant="outline-dark"
+                    onClick={decrementar}
+                >
+                    -
+                </Button>
 
-            <button onClick={manejarAgregar}>Agregar al carrito</button>
+                <Button
+                    variant="light"
+                    disabled
+                >
+                    {count}
+                </Button>
+
+                <Button
+                    variant="outline-dark"
+                    onClick={incrementar}
+                >
+                    +
+                </Button>
+
+            </ButtonGroup>
+
+            <br />
+
+            <Button
+                variant="dark"
+                onClick={manejarAgregar}
+            >
+                Agregar al carrito
+            </Button>
 
         </div>
+
     )
+
 }
 
 export default ItemCount

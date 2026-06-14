@@ -1,30 +1,63 @@
 import { Link } from "react-router-dom"
 
+import Card from "react-bootstrap/Card"
+import Button from "react-bootstrap/Button"
 
 const Item = ({ producto }) => {
-    return (
-        <div>
 
-            <img
+    return (
+
+        <Card
+            className="shadow h-100"
+            style={{
+                width: "18rem",
+                borderRadius: "15px"
+            }}
+        >
+
+            <Card.Img
+                variant="top"
                 src={producto.imagen}
                 alt={producto.nombre}
+                style={{
+                    height: "220px",
+                    objectFit: "cover"
+                }}
             />
 
-            <h3>{producto.nombre}</h3>
+            <Card.Body className="d-flex flex-column">
 
-            <p>{producto.descripcion}</p>
+                <Card.Title>
+                    {producto.nombre}
+                </Card.Title>
 
-            <p>Precio: ${producto.precio}</p>
+                <Card.Text>
+                    {producto.descripcion}
+                </Card.Text>
 
-            <p>Categoria: {producto.categoria}</p>
+                <Card.Text>
+                    <strong>${producto.precio}</strong>
+                </Card.Text>
 
-            <Link to={`/item/${producto.id}`}>Ver detalle</Link>
+                <Card.Text>
+                    {producto.categoria}
+                </Card.Text>
 
-            <hr />
+                <Button
+                    as={Link}
+                    to={`/item/${producto.id}`}
+                    variant="dark"
+                    className="mt-auto"
+                >
+                    Ver detalle
+                </Button>
 
-        </div>
+            </Card.Body>
+
+        </Card>
+
     )
-}
 
+}
 
 export default Item
