@@ -1,18 +1,24 @@
+import { collection, addDoc } from "firebase/firestore"
+import { db } from "../firebase/firebaseConfig"
+
 import { useState } from "react"
 import { useContext } from "react"
+
 import { CartContext } from "../context/CartContext"
 
 const Checkout = () => {
 
-    const [nombre, setNombre] = useState('')
+    const [nombre, setNombre] = useState('') 
 
     const [telefono, setTelefono] = useState('')
 
     const [email, setEmail] = useState('')
 
+    const [orderId, setOrderId] = useState('')
+
     const { cart } = useContext(CartContext)
 
-    const finalizarCompra = (e) => {
+    const finalizarCompra = async (e) => {
 
         e.preventDefault()
 
@@ -35,8 +41,26 @@ const Checkout = () => {
             total
         }
 
-        console.log(orden)
+        const ordersRef = collection(db, "orders")
 
+        const documento = await addDoc(ordersRef, orden)
+
+        setOrderId(documento.id)
+
+
+    }
+
+    if (orderId) {
+
+        return (
+            <section>
+
+                <h2>Compra realizada con éxito</h2>
+
+                <p>ID de la orden: {orderId}</p>
+
+            </section>
+        )
 
     }
 
