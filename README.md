@@ -39,13 +39,13 @@ Tech-Store es una Single Page Application (SPA) de e-commerce desarrollada con R
 Clonar el repositorio:
 
 ```bash
-git clone URL_DEL_REPOSITORIO
+git clone https://github.com/keviniumm/e-commerce-con-React.git
 ```
 
 Ingresar a la carpeta del proyecto:
 
 ```bash
-cd nombre-del-proyecto
+cd e-commerce-react-vite
 ```
 
 Instalar dependencias:
@@ -75,4 +75,4 @@ El proyecto utiliza Firebase Firestore para almacenar:
 
 Proyecto desarrollado como trabajo final del curso de React.
 AUTOR: Kevin Eduardo Vallejos
-EMAIL: kevineduardovallejos11@gmail.com
+Correo electrónico: kevineduardovallejos11@gmail.com
