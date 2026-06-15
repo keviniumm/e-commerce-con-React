@@ -1,16 +1,76 @@
-# React + Vite
+# Tech-Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
 
-Currently, two official plugins are available:
+Tech-Store es una Single Page Application (SPA) de e-commerce desarrollada con React y Vite. Permite visualizar un catálogo de productos tecnológicos, filtrarlos por categorías, consultar el detalle de cada producto, agregarlos al carrito y finalizar una compra almacenando la orden en Firebase Firestore.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Tecnologías utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* React
+* Vite
+* React Router DOM
+* React Context API
+* Firebase Firestore
+* Bootstrap
+* Bootstrap Icons
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Funcionalidades
+
+* Visualización del catálogo de productos.
+* Filtrado por categorías.
+* Vista detallada de cada producto.
+* Agregado de productos al carrito.
+* Modificación automática de cantidades en el carrito.
+* Eliminación individual de productos.
+* Vaciado completo del carrito.
+* Checkout con formulario de compra.
+* Generación de órdenes en Firestore.
+* Almacenamiento de comprador, productos, cantidades, total y fecha de la compra.
+* Visualización del ID de la orden generada.
+
+---
+
+## Instalación
+
+Clonar el repositorio:
+
+```bash
+git clone URL_DEL_REPOSITORIO
+```
+
+Ingresar a la carpeta del proyecto:
+
+```bash
+cd nombre-del-proyecto
+```
+
+Instalar dependencias:
+
+```bash
+npm install
+```
+
+Iniciar el servidor de desarrollo:
+
+```bash
+npm run dev
+```
+
+---
+
+## Base de datos
+
+El proyecto utiliza Firebase Firestore para almacenar:
+
+* Productos del catálogo.
+* Órdenes de compra generadas por los usuarios.
+
+---
+
+## Autor
+
+Proyecto desarrollado como trabajo final del curso de React.

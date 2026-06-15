@@ -95,6 +95,16 @@ const ItemLIstContainer = ({ greeting }) => {
                     </Link>
 
                     <Link
+                        className={`me-3 ${categoryId === "accesorios"
+                            ? "text-warning fw-bold"
+                            : "text-secondary"
+                            }`}
+                        to="/category/accesorios"
+                    >
+                        Accesorios
+                    </Link>
+                    
+                    <Link
                         className={`me-3 ${categoryId === "gaming"
                             ? "text-warning fw-bold"
                             : "text-secondary"
@@ -104,15 +114,7 @@ const ItemLIstContainer = ({ greeting }) => {
                         Gaming
                     </Link>
 
-                    <Link
-                        className={`me-3 ${categoryId === "accesorios"
-                                ? "text-warning fw-bold"
-                                : "text-secondary"
-                            }`}
-                        to="/category/accesorios"
-                    >
-                        Accesorios
-                    </Link>
+
 
                 </div>
 
