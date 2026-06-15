@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 import {
     collection,
@@ -34,8 +34,6 @@ const ItemLIstContainer = ({ greeting }) => {
                 : collection(db, "products")
 
             const snapshot = await getDocs(productsRef)
-
-
 
 
             const productos = snapshot.docs.map(doc => ({
@@ -74,9 +72,49 @@ const ItemLIstContainer = ({ greeting }) => {
                     Los mejores productos tecnológicos al mejor precio
                 </p>
 
-                <p className="text-secondary">
-                    Celulares • Notebooks • Gaming • Accesorios
-                </p>
+                <div className="mt-3">
+
+                    <Link
+                        className={`me-3 ${categoryId === "celulares"
+                            ? "text-warning fw-bold"
+                            : "text-secondary"
+                            }`}
+                        to="/category/celulares"
+                    >
+                        Celulares
+                    </Link>
+
+                    <Link
+                        className={`me-3 ${categoryId === "notebooks"
+                            ? "text-warning fw-bold"
+                            : "text-secondary"
+                            }`}
+                        to="/category/notebooks"
+                    >
+                        Notekooks
+                    </Link>
+
+                    <Link
+                        className={`me-3 ${categoryId === "gaming"
+                            ? "text-warning fw-bold"
+                            : "text-secondary"
+                            }`}
+                        to="/category/gaming"
+                    >
+                        Gaming
+                    </Link>
+
+                    <Link
+                        className={`me-3 ${categoryId === "accesorios"
+                                ? "text-warning fw-bold"
+                                : "text-secondary"
+                            }`}
+                        to="/category/accesorios"
+                    >
+                        Accesorios
+                    </Link>
+
+                </div>
 
             </div>
 

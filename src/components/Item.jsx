@@ -21,7 +21,7 @@ const Item = ({ producto }) => {
                 alt={producto.nombre}
                 style={{
                     height: "220px",
-                    objectFit: "cover"
+                    objectFit: "contain"
                 }}
             />
 

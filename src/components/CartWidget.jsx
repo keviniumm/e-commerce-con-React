@@ -15,15 +15,27 @@ const CartWidget = () => {
 
 
     return (
-        <Link to='/cart'>
+        <Link
+            to="/cart"
+            className="text-white text-decoration-none position-relative"
+        >
 
-            <div>
+            <i className="bi bi-cart3 fs-3"></i>
 
-                ICONO CARRITO {cantidadTotal}
+            {
+                cantidadTotal > 0 && (
 
-            </div>
+                    <span
+                        className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    >
+                        {cantidadTotal}
+                    </span>
+
+                )
+            }
 
         </Link>
+
 
     )
 }
