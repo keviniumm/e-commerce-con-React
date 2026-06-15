@@ -74,3 +74,5 @@ El proyecto utiliza Firebase Firestore para almacenar:
 ## Autor
 
 Proyecto desarrollado como trabajo final del curso de React.
+AUTOR: Kevin Eduardo Vallejos
+EMAIL: kevineduardovallejos11@gmail.com
